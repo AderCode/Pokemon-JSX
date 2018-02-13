@@ -22,8 +22,8 @@ class App extends Component {
 
   }
 
-  handleAttack(hit) {
-    let newHealth = this.state.opponent.currentHealth - hit;
+  handleAttack(dmg) {
+    let newHealth = this.state.opponent.currentHealth - dmg;
     this.setState({ opponent: {name: "Covalence",
     baseHealth: 1000,
     currentHealth: newHealth,

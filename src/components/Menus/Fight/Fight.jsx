@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import AttackStats from './AttackStats';
 import RightArrow from '../../RightArrow'
-import App from '../../App'
 import './CSS/Fight.css'
 
 export default class Fight extends Component {
