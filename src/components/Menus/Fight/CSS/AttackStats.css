@@ -1,0 +1,32 @@
+.attack_stats-box {
+    height: 15rem;
+    width: 39rem;
+    position: absolute;
+    margin-top: 24.54rem;
+    margin-left: 0.2rem;
+    border-radius: 0.25rem;
+      background: white;
+      border: 0.25rem solid white;
+      box-shadow: 0.15rem 0.15rem 0 0.15rem black,
+      inset 0.15rem 0.15rem 0 0.15rem black,
+      0 0 0 0.15rem black,
+      inset 0 0 0 0.15rem black;
+}
+
+.stat_label {
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem
+}
+
+.attack_type {
+    position: absolute;
+    top: 4.5rem;
+    left: 14rem
+}
+
+.power_points {
+    position: absolute;
+    top: 10rem;
+    left: 12rem
+}

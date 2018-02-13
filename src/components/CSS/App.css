@@ -1,0 +1,167 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
+
+@font-face {
+  font-family: pokemon_gb;
+  src: url(./fonts/pokemon_gb.ttf);
+}
+
+@font-face {
+  font-family: pokemon_unown_gb;
+  src: url(./fonts/pokemon_unown_gb.ttf);
+}
+
+div {
+  font-family: pokemon_gb;
+}
+
+.main {
+  position: relative;
+  height: 55rem;
+  width: 71rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+.box {
+  border-radius: 0.25rem;
+  background: white;
+  border: 0.25rem solid white;
+  box-shadow: 0.15rem 0.15rem 0 0.15rem black,
+              inset 0.15rem 0.15rem 0 0.15rem black,
+              0 0 0 0.15rem black,
+              inset 0 0 0 0.15rem black;
+}
+
+.opponent-box {
+  position: absolute;
+  height: 7rem;
+  width: 35rem;
+  top: 0.16rem;
+  left: 0.15rem;
+  border-radius: 0.25rem;
+  background: white;
+  border-right: 0.25rem solid white;
+  border-bottom: 0.25rem solid white;
+  box-shadow: 0.15rem 0.15rem 0 0.15rem black,
+              inset 0 0 0 0.15rem black,
+              0 0 0 0.15rem black;
+
+}
+
+.opponent-name {
+  position: absolute;
+  font-size: 2rem;
+  top: 0.5rem;
+  left: 1rem
+
+}
+
+.opponent-health {
+  position: absolute;
+  font-size: 2rem;
+  top: 4rem;
+  left: 15rem;
+}
+
+.opponent-sprite{
+  position: absolute;
+  height: 20rem;
+  top: 2rem;
+  left: 42rem;
+}
+
+.player-box {
+  position: absolute;
+  height: 7rem;
+  width: 35rem;
+  margin-top: 32.16rem;
+  margin-left: 35.35rem;
+  border-radius: 0.25rem;
+  background: white;
+  border-left: 0.25rem solid white;
+  border-top: 0.25rem solid white;
+  box-shadow: 0.15rem 0.15rem 0 0 black,
+  inset 0.15rem 0.15rem 0 0.15rem black,
+  0 0 0 0.15rem black;
+}
+
+.player-name {
+  position: absolute;
+  font-size: 2rem;
+  top: 0.5rem;
+  left: 1rem;
+
+}
+
+.player-health {
+  position: absolute;
+  font-size: 2rem;
+  top: 4rem;
+  left: 20rem;
+}
+
+.player-sprite {
+  position: absolute;
+  height: 25rem;
+  top: 15rem;
+  left: 5rem;
+}
+
+.selections-box {
+  position: absolute;
+  height: 15rem;
+  width: 40rem;
+  margin-top: 39.34rem;
+  left: 0.15rem;
+  border-radius: 0.25rem;
+  background: white;
+  border-top: 0.25rem solid white;
+  border-right: 0.25rem solid white;
+  box-shadow: 0 0.15rem 0 0 black,
+              inset 0 0.15rem 0 0.15rem black,
+              0 0 0 0.15rem black
+}
+
+
+
+
+/* .box > i {
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: black;
+  margin-top: 23px;
+  animation: bounce 0.5s ease-in-out 0 infinite alternate;
+  float: right;
+} */
+
+
