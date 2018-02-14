@@ -6,6 +6,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      turn: "player",
       player: {
         name: "Matthew Aderhold",
         baseHealth: 100,
@@ -33,14 +34,14 @@ class App extends Component {
   render() {
     let opponent = this.state.opponent
     let player = this.state.player
-    return (
+      return (
       <div className="main box">
         <div className="opponent-box">
           <span className="opponent-name">
             {opponent.name}
           </span>
           <span className="opponent-health-bar">
-          <progress id="health" value={opponent.currentHealth} max={opponent.baseHealth}></progress>
+          <progress id="opponent-health" value={opponent.currentHealth} max={opponent.baseHealth}></progress>
           </span>
           <span className="opponent-health">
             HP:{opponent.currentHealth}/{opponent.baseHealth}
@@ -51,12 +52,17 @@ class App extends Component {
           <span className="player-name">
             {player.name}
           </span>
+          <span className="player-health-bar">
+          <progress id="player-health" value={player.currentHealth} max={player.baseHealth}></progress>
+          </span>
           <span className="player-health">
             HP:{player.currentHealth}/{player.baseHealth}
           </span>
         </div>
         {player.sprite}
-        <div className="selections-box"></div>
+        <div className="selections-box">
+        
+        </div>
         <Menus attack = {this.handleAttack.bind(this)}/>
       </div>
     );

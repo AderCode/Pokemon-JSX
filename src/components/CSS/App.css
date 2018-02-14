@@ -68,6 +68,20 @@ div {
               inset 0 0 0 0.15rem black;
 }
 
+.selections {
+  position: absolute;
+  font-size: 3rem;
+  top: 3rem;
+  left: 1rem;
+}
+
+.selections2 {
+  position: absolute;
+  font-size: 3rem;
+  top: 9.5rem;
+  left: 1rem;
+}
+
 .opponent-box {
   position: absolute;
   height: 7rem;
@@ -99,7 +113,7 @@ div {
   left: 10rem;
 }
 
-#health {
+#opponent-health {
   position: absolute;
   top: 2rem;
   left: 0.5rem;
@@ -143,6 +157,13 @@ div {
   font-size: 2rem;
   top: 4rem;
   left: 15rem;
+}
+
+#player-health {
+  position: absolute;
+  top: 1.5rem;
+  left: 0.75rem;
+  width: 34rem
 }
 
 .player-sprite {
