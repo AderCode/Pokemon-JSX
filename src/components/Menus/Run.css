@@ -1,0 +1,37 @@
+.run-div {
+    height: 15rem;
+    width: 39rem;
+    position: absolute;
+    margin-top: 14.34rem;
+    margin-left: 15.2rem;
+    border-radius: 0.25rem;
+      background: white;
+      border: 0.25rem solid white;
+      box-shadow: 0.15rem 0.15rem 0 0.15rem black,
+      inset 0.15rem 0.15rem 0 0.15rem black,
+      0 0 0 0.15rem black,
+      inset 0 0 0 0.15rem black;
+}
+
+.run-text {
+    font-size: 3rem;
+    top: 2rem;
+    left: 2rem;
+}
+
+.run-back {
+    font-size: 3rem;
+    top: 12rem;
+    left: 26.5rem;
+}
+
+.run-back-arrow {
+    position: absolute;
+    width: 0; 
+    height: 0;
+    top: 11.5rem;
+    left: 24rem; 
+    border-top: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    border-left: 1.5rem solid black;
+}

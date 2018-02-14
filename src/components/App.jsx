@@ -39,8 +39,11 @@ class App extends Component {
           <span className="opponent-name">
             {opponent.name}
           </span>
+          <span className="opponent-health-bar">
+          <progress id="health" value={opponent.currentHealth} max={opponent.baseHealth}></progress>
+          </span>
           <span className="opponent-health">
-            {opponent.currentHealth}/{opponent.baseHealth}
+            HP:{opponent.currentHealth}/{opponent.baseHealth}
           </span>
         </div>
         {opponent.sprite}
@@ -49,7 +52,7 @@ class App extends Component {
             {player.name}
           </span>
           <span className="player-health">
-            {player.currentHealth}/{player.baseHealth}
+            HP:{player.currentHealth}/{player.baseHealth}
           </span>
         </div>
         {player.sprite}

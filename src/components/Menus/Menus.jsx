@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Fight from './Fight/Fight'
+import Run from './Run'
 import RightArrow from '../RightArrow'
 import './Menus.css'
 
@@ -35,7 +36,10 @@ export default class Menus extends Component {
         let selected = this.state.selected
         if (menu === "fight") {
             return <Fight handleClick = {this.handleClick.bind(this)} attack = {this.props.attack}/>
+        } else if (menu === "run") {
+            return <Run handleClick = {this.handleClick.bind(this)} />
         } else {
+
             return (
                 <div className="menus-box">
 
@@ -46,7 +50,7 @@ export default class Menus extends Component {
 
                     <span className="items" onMouseEnter={() => this.handleMouseEnter("items-arrow")} onMouseLeave={()=>this.handleMouseLeave()}>Items</span>    
                     
-                    <span className="run" onMouseEnter={() => this.handleMouseEnter("run-arrow")} onMouseLeave={()=>this.handleMouseLeave()}>Run</span>
+                    <span className="run" onClick={() => this.handleClick("run")} onMouseEnter={() => this.handleMouseEnter("run-arrow")} onMouseLeave={()=>this.handleMouseLeave()}>Run</span>
 
                 </div>
             )
