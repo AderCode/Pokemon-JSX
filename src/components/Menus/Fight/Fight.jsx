@@ -15,7 +15,7 @@ export default class Fight extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.store)
+        // console.log(this.props.store)
     }
 
     handleMouseEnter(arrowClass, move) {
