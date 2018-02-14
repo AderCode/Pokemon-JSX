@@ -1,120 +1,148 @@
 import React, { Component } from 'react';
 import './CSS/App.css'
 import Menus from './Menus/Menus'
+import AttackMsg from './AttackMsg'
 class App extends Component {
   constructor(props) {
     super(props);
 
+
     this.state = {
       turn: "player",
+      isAttacking: false,
+      msg: "",
+      oponnentDmg: "",
+      playerDmg: "",
       player: {
         name: "Matthew Aderhold",
         baseHP: 100,
         currentHP: 100,
-        sprite: <img className="player-sprite" src={require('../srcImages/player.png')} alt="player" />,
+        sprite: require('../srcImages/player.png'),
         moves: {
           1: {
-              name: "Bootstrap",
-              str: 10,
-              type: "CSS",
-              accuracy: 60,
-              basePP: 30,
-              currentPP: 21
+            name: "Bootstrap",
+            str: 30,
+            type: "CSS",
+            accuracy: 90,
+            basePP: 10,
+            currentPP: 8
           },
           2: {
-              name: "ReactJS",
-              str: 20,
-              type: "JSX",
-              accuracy: 60,
-              basePP: 25,
-              currentPP:13
+            name: "ReactJS",
+            str: 80,
+            type: "JSX",
+            accuracy: 60,
+            basePP: 10,
+            currentPP: 7
           },
           3: {
-              name: "NodeJS",
-              str: 30,
-              type: "Server",
-              accuracy: 60,
-              basePP: 15,
-              currentPP: 12
+            name: "NodeJS",
+            str: 50,
+            type: "Server",
+            accuracy: 70,
+            basePP: 15,
+            currentPP: 12
           },
           4: {
-              name: "MySQL",
-              str: 40,
-              type: "Database",
-              accuracy: 60,
-              basePP: 20,
-              currentPP: 17
+            name: "MySQL",
+            str: 30,
+            type: "Database",
+            accuracy: 60,
+            basePP: 20,
+            currentPP: 17
           }
-      }
+        }
       },
       opponent: {
         name: "Covalence",
         type: "bootcamp",
         baseHP: 1000,
         currentHP: 1000,
-        sprite: <img className="opponent-sprite" src={require('../srcImages/covalence.png')} alt="opponent" />,
+        sprite: require('../srcImages/covalence.png'),
         moves: {
           1: {
-              name: "Week 0",
-              str: 50,
-              type: "WTF",
-              accuracy: 60,
-              basePP: 1,
-              currentPP: 1
+            name: "[object Object]",
+            str: 5,
+            type: "WTF",
+            accuracy: 60,
+            basePP: 1,
+            currentPP: 1
           },
           2: {
-              name: "Group Project",
-              str: 20,
-              type: "Agile",
-              accuracy: 50,
-              basePP: 2,
-              currentPP:2
+            name: "slowMath",
+            str: 15,
+            type: "OOP",
+            accuracy: 50,
+            basePP: 2,
+            currentPP: 2
           },
           3: {
-              name: "Boilerplate",
-              str: 30,
-              type: "Incomplete",
-              accuracy: 75,
-              basePP: 3,
-              currentPP: 3
+            name: "Construstor",
+            str: 20,
+            type: "SyntaxErr",
+            accuracy: 75,
+            basePP: 3,
+            currentPP: 3
           },
           4: {
-              name: "Advanced Section",
-              str: 40,
-              type: "Vague",
-              accuracy: 80,
-              basePP: 5,
-              currentPP: 5
+            name: "Advanced Section",
+            str: 10,
+            type: "Vague",
+            accuracy: 80,
+            basePP: 5,
+            currentPP: 5
           }
-      }
+        }
       }
     }
-
   }
+
+
 
   handleAttack(move) {
+    let opponentMove = Math.floor(Math.random() * 4) + 1
     let player = this.state.player
     let opponent = this.state.opponent
-    let newHP = opponent.currentHP - player.moves[move].str;
-    this.setState({
+    let newOpponentHP = opponent.currentHP - player.moves[move].str;
+    let newPlayerHP = player.currentHP - opponent.moves[move].str;
+    let opponentMsg = `${opponent.name} used ${opponent.moves[opponentMove].name}!`
+    let playerMsg = `${player.name} used ${player.moves[move].name}!`
+
+    setTimeout(this.setState.bind(this), 150, { isAttacking: true, msg: playerMsg });
+    setTimeout(this.setState.bind(this), 2100, {
       opponent: {
-        name: "Covalence",
-        baseHP: 1000,
-        currentHP: newHP,
-        sprite: <img className="opponent-sprite" src={require('../srcImages/covalence.png')} alt="opponent" />
+        name: opponent.name,
+        baseHP: opponent.baseHP,
+        currentHP: newOpponentHP,
+        sprite: opponent.sprite,
+        moves: opponent.moves
       }
     })
+    setTimeout(this.setState.bind(this), 1250, { opponentDmg: "dmg" })
+    setTimeout(this.setState.bind(this), 1550, { opponentDmg: "" })
+    setTimeout(this.setState.bind(this), 2550, { turn: "opponent" })
+    setTimeout(this.setState.bind(this), 2700, { msg: opponentMsg });
+    setTimeout(this.setState.bind(this), 4650, {
+          player: {
+            name: player.name,
+            baseHP: player.baseHP,
+            currentHP: newPlayerHP,
+            sprite: player.sprite,
+            moves: player.moves
+          }
+        })
+    setTimeout(this.setState.bind(this), 3800, { playerDmg: "dmg" })
+    setTimeout(this.setState.bind(this), 4100, { playerDmg: "" })
+    setTimeout(this.setState.bind(this), 5100, { turn: "player", isAttacking: false })
+
   }
 
-  handleOpponentTurn() {
-    if(this.state.turn === "opponent") {
-      
-    }
-  }
 
   render() {
     let opponent = this.state.opponent
     let player = this.state.player
+    let opponentDmgClass = this.state.opponentDmg
+    let playerDmgClass = this.state.playerDmg
     return (
       <div className="main box">
 
@@ -135,7 +163,7 @@ class App extends Component {
 
         </div>
 
-        {opponent.sprite}
+        <img className={`opponent-sprite ${opponentDmgClass}`} src={this.state.opponent.sprite} alt="opponent" />
 
         <div className="player-box">
 
@@ -154,13 +182,13 @@ class App extends Component {
 
         </div>
 
-        {player.sprite}
+        <img className={`player-sprite ${playerDmgClass}`} src={`${this.state.player.sprite}`} alt="player" />
 
         <div className="selections-box">
         </div>
 
-        <Menus handleAttack={this.handleAttack.bind(this)} store = {this.state}/>
-
+        <Menus handleAttack={this.handleAttack.bind(this)} store={this.state} />
+        {this.state.isAttacking && <AttackMsg msg={this.state.msg} />}
         {this.state.turn === "opponent" && <div id="disable" />}
 
       </div>
