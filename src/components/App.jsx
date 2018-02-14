@@ -62,7 +62,7 @@ class App extends Component {
         moves: {
           1: {
             name: "[object Object]",
-            str: 5,
+            str: 3,
             type: "WTF",
             accuracy: 60,
             basePP: 1,
@@ -70,7 +70,7 @@ class App extends Component {
           },
           2: {
             name: "slowMath",
-            str: 15,
+            str: 5,
             type: "OOP",
             accuracy: 50,
             basePP: 2,
@@ -78,7 +78,7 @@ class App extends Component {
           },
           3: {
             name: "Construstor",
-            str: 20,
+            str: 8,
             type: "SyntaxErr",
             accuracy: 75,
             basePP: 3,
@@ -86,7 +86,7 @@ class App extends Component {
           },
           4: {
             name: "Advanced Section",
-            str: 10,
+            str: 8,
             type: "Vague",
             accuracy: 80,
             basePP: 5,
@@ -123,17 +123,39 @@ class App extends Component {
     setTimeout(this.setState.bind(this), 2550, { turn: "opponent" })
     setTimeout(this.setState.bind(this), 2700, { msg: opponentMsg });
     setTimeout(this.setState.bind(this), 4650, {
-          player: {
-            name: player.name,
-            baseHP: player.baseHP,
-            currentHP: newPlayerHP,
-            sprite: player.sprite,
-            moves: player.moves
-          }
-        })
+      player: {
+        name: player.name,
+        baseHP: player.baseHP,
+        currentHP: newPlayerHP,
+        sprite: player.sprite,
+        moves: player.moves
+      }
+    })
     setTimeout(this.setState.bind(this), 3800, { playerDmg: "dmg" })
     setTimeout(this.setState.bind(this), 4100, { playerDmg: "" })
     setTimeout(this.setState.bind(this), 5100, { turn: "player", isAttacking: false })
+
+    // setTimeout(() => {if (player.currentHP < 30) {
+    //   this.setState({ msg: `${player.name} used DETERMINATION!!!` })
+    //   setTimeout(() => {
+    //       for (let i = player.currentHP; i < player.baseHP;) {
+    //       let newPlayerHP = player.currentHP + 1
+    //         this.setState({
+    //           player: {
+    //             name: player.name,
+    //             baseHP: player.baseHP,
+    //             currentHP: newPlayerHP,
+    //             sprite: player.sprite,
+    //             moves: player.moves
+    //           }
+    //         })
+    //       }
+    //     }
+    //   , 2000)
+
+    // } else {
+    //   this.setState({ turn: "player", isAttacking: false })
+    // }}, 5100)
 
   }
 
