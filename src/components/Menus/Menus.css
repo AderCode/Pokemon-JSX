@@ -3,8 +3,8 @@
     height: 15rem;
     width: 39rem;
     position: absolute;
-    margin-top: 39.34rem;
-    margin-left: 31.35rem;
+    margin-top: 39.54rem;
+    margin-left: 31.55rem;
     border-radius: 0.25rem;
       background: white;
       border-left: 0.25rem solid white;
@@ -21,22 +21,22 @@
    }
     
     .fight {
-        top: 2rem;
+        top: 3rem;
         left: 5rem
     }
     
     .PkMn {
-        top: 2rem;
+        top: 3rem;
         left: 25rem
     }
     
     .items {
-        top: 9rem;
+        top: 10rem;
         left: 5rem;
     }
     
     .run {
-        top: 9rem;
+        top: 10rem;
         left: 25rem;
     }
 
@@ -44,7 +44,7 @@
         position: absolute;
         width: 0; 
         height: 0;
-        top: 2rem;
+        top: 2.5rem;
         left: 2rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
@@ -55,7 +55,7 @@
         position: absolute;
         width: 0; 
         height: 0;
-        top: 2rem;
+        top: 2.5rem;
         left: 22rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
@@ -66,7 +66,7 @@
         position: absolute;
         width: 0; 
         height: 0;
-        top: 9rem;
+        top: 9.5rem;
         left: 2rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
@@ -77,7 +77,7 @@
         position: absolute;
         width: 0; 
         height: 0;
-        top: 9rem;
+        top: 9.5rem;
         left: 22rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;

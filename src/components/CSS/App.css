@@ -80,7 +80,7 @@ div {
 .opponent-name {
   position: absolute;
   font-size: 2rem;
-  top: 0.5rem;
+  top: 1rem;
   left: 1rem
 
 }
@@ -104,7 +104,7 @@ div {
   height: 7rem;
   width: 35rem;
   margin-top: 32.16rem;
-  margin-left: 35.35rem;
+  margin-left: 35.55rem;
   border-radius: 0.25rem;
   background: white;
   border-left: 0.25rem solid white;
@@ -117,7 +117,7 @@ div {
 .player-name {
   position: absolute;
   font-size: 2rem;
-  top: 0.5rem;
+  top: 1rem;
   left: 1rem;
 
 }
@@ -132,7 +132,7 @@ div {
 .player-sprite {
   position: absolute;
   height: 25rem;
-  top: 15rem;
+  top: 15.5rem;
   left: 5rem;
 }
 
@@ -140,7 +140,7 @@ div {
   position: absolute;
   height: 15rem;
   width: 40rem;
-  margin-top: 39.34rem;
+  top: 39.54rem;
   left: 0.15rem;
   border-radius: 0.25rem;
   background: white;

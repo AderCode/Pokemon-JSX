@@ -3,8 +3,8 @@
     height: 15rem;
 width: 54rem;
 position: absolute;
-margin-top: 39.34rem;
-margin-left: 16.35rem;
+margin-top: 39.54rem;
+margin-left: 16.55rem;
 border-radius: 0.25rem;
   background: white;
   border-left: 0.25rem solid white;
@@ -20,25 +20,25 @@ border-radius: 0.25rem;
 }
 
 .attack_slot_1 {
-    top: 0.5rem;
+    top: 1rem;
 }
 
 .attack_slot_2 {
-    top: 4rem;
+    top: 4.5rem;
 }
 
 .attack_slot_3 {
-    top: 7.5rem;
+    top: 8rem;
 }
 
 .attack_slot_4 {
-    top: 11rem;
+    top: 11.5rem;
 }
 
 .back {
     font-size: 2rem;
     left: 45rem;
-    top: 12rem;
+    top: 12.5rem;
 }
 
 .attack_slot_1-arrow {
