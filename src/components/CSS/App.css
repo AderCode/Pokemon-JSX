@@ -188,6 +188,36 @@ div {
               0 0 0 0.15rem black
 }
 
+.atk-msg-box {
+  position: absolute;
+  height: 15rem;
+  width: 70.4rem;
+  top: 39.54rem;
+  left: 0.15rem;
+  border-radius: 0.25rem;
+  background: white;
+  border-top: 0.25rem solid white;
+  border-right: 0.25rem solid white;
+  box-shadow: 0 0.15rem 0 0 black,
+              inset 0 0.15rem 0 0.15rem black,
+              0 0 0 0.15rem black
+}
+
+.atk-msg {
+  position: absolute;
+  font-size: 3rem;
+  top: 1rem;
+  left: 1rem;
+}
+
+.dmg {
+  animation: blinker 0.15s linear infinite;
+}
+
+@keyframes blinker {  
+  60% { opacity: 0; }
+}
+
 #overlay {
   background-color: rgba(0, 0, 0, 0.1);
   z-index: 999;
