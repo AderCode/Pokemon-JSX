@@ -11,49 +11,18 @@ export default class Fight extends Component {
             isHidden: true,
             class: "null",
             isSelected: false,
-            selected: "null",
-            moves: {
-                1: {
-                    name: "Bootstrap",
-                    str: 10,
-                    type: "CSS",
-                    accuracy: 60,
-                    basePP: 30,
-                    currentPP: 21
-                },
-                2: {
-                    name: "ReactJS",
-                    str: 20,
-                    type: "JSX",
-                    accuracy: 60,
-                    basePP: 25,
-                    currentPP:13
-                },
-                3: {
-                    name: "NodeJS",
-                    str: 30,
-                    type: "Server",
-                    accuracy: 60,
-                    basePP: 15,
-                    currentPP: 12
-                },
-                4: {
-                    name: "MySQL",
-                    str: 40,
-                    type: "Database",
-                    accuracy: 60,
-                    basePP: 20,
-                    currentPP: 17
-                }
-            }
+            selected: "null"
         }
+    }
+    componentDidMount() {
+        console.log(this.props.store)
     }
 
     handleMouseEnter(arrowClass, move) {
-        if(move !== -1) {
+        if (move !== -1) {
             this.setState({ isHidden: false, isSelected: true, class: arrowClass, selected: move })
         } else {
-            this.setState({ isHidden: false, class: arrowClass,})
+            this.setState({ isHidden: false, class: arrowClass, })
         }
     }
 
@@ -61,20 +30,20 @@ export default class Fight extends Component {
         this.setState({ isHidden: true, isSelected: false, class: "null", selected: "null" })
     }
 
-    
+
 
 
     render() {
-        let attack = this.state.moves;
+        let attack = this.props.store.player.moves;
         let selected = this.state.class;
         return (
             <Fragment>
                 <div className="attacks-box">
-                {!this.state.isHidden && <RightArrow class={selected} />}
+                    {!this.state.isHidden && <RightArrow class={selected} />}
                     <span
                         id="attacks"
                         className="attack_slot_1"
-                        onClick={() => {this.props.attack(attack["1"].str); this.props.handleClick("main")}}
+                        onClick={() => { this.props.handleAttack(1); this.props.handleClick("main") }}
                         onMouseEnter={() => this.handleMouseEnter("attack_slot_1-arrow", 1)}
                         onMouseLeave={() => this.handleMouseLeave()}>
                         {attack["1"].name}
@@ -83,7 +52,7 @@ export default class Fight extends Component {
                     <span
                         id="attacks"
                         className="attack_slot_2"
-                        onClick={() => {this.props.attack(attack["2"].str); this.props.handleClick("main")}}
+                        onClick={() => { this.props.handleAttack(2); this.props.handleClick("main") }}
                         onMouseEnter={() => this.handleMouseEnter("attack_slot_2-arrow", 2)}
                         onMouseLeave={() => this.handleMouseLeave()}>
                         {attack["2"].name}
@@ -92,7 +61,7 @@ export default class Fight extends Component {
                     <span
                         id="attacks"
                         className="attack_slot_3"
-                        onClick={() => {this.props.attack(attack["3"].str); this.props.handleClick("main")}}
+                        onClick={() => { this.props.handleAttack(3); this.props.handleClick("main") }}
                         onMouseEnter={() => this.handleMouseEnter("attack_slot_3-arrow", 3)}
                         onMouseLeave={() => this.handleMouseLeave()}>
                         {attack["3"].name}
@@ -101,7 +70,7 @@ export default class Fight extends Component {
                     <span
                         id="attacks"
                         className="attack_slot_4"
-                        onClick={() => {this.props.attack(attack["4"].str); this.props.handleClick("main")}}
+                        onClick={() => { this.props.handleAttack(4); this.props.handleClick("main") }}
                         onMouseEnter={() => this.handleMouseEnter("attack_slot_4-arrow", 4)}
                         onMouseLeave={() => this.handleMouseLeave()}>
                         {attack["4"].name}
@@ -115,7 +84,7 @@ export default class Fight extends Component {
                         Back
                     </span>
                 </div>
-                {this.state.isSelected && <AttackStats stats = {this.state.moves[this.state.selected]}/>}
+                {this.state.isSelected && <AttackStats stats={attack[this.state.selected]} />}
             </Fragment>
         )
     }
