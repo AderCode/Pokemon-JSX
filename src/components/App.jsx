@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './CSS/App.css'
 import Menus from './Menus/Menus'
-import AttackMsg from './AttackMsg'
+import ActionMessage from './Utilities/ActionMessage'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,10 +9,10 @@ class App extends Component {
 
     this.state = {
       turn: "player",
-      isAttacking: false,
-      msg: "",
-      oponnentDmg: "",
-      playerDmg: "",
+      isAttackPhase: false,
+      actionMessage: "",
+      opponentTakeDmg: false,
+      playerTakeDmg: false,
       player: {
         name: "Matthew Aderhold",
         baseHP: 100,
@@ -103,12 +103,14 @@ class App extends Component {
     let opponentMove = Math.floor(Math.random() * 4) + 1
     let player = this.state.player
     let opponent = this.state.opponent
-    let newOpponentHP = opponent.currentHP - player.moves[move].str;
+    let newOpponentHP;
+    opponent.currentHP > player.moves[move].str ? newOpponentHP = opponent.currentHP - player.moves[move].str : newOpponentHP = opponent.currentHP - opponent.currentHP
     let newPlayerHP = player.currentHP - opponent.moves[move].str;
+    player.currentHP > opponent.moves[move].str ? newPlayerHP = player.currentHP - opponent.moves[move].str : newPlayerHP = player.currentHP - player.currentHP
     let opponentMsg = `${opponent.name} used ${opponent.moves[opponentMove].name}!`
     let playerMsg = `${player.name} used ${player.moves[move].name}!`
 
-    setTimeout(this.setState.bind(this), 150, { isAttacking: true, msg: playerMsg });
+    setTimeout(this.setState.bind(this), 150, { isAttackPhase: true, actionMessage: playerMsg });
     setTimeout(this.setState.bind(this), 2100, {
       opponent: {
         name: opponent.name,
@@ -118,10 +120,10 @@ class App extends Component {
         moves: opponent.moves
       }
     })
-    setTimeout(this.setState.bind(this), 1250, { opponentDmg: "dmg" })
-    setTimeout(this.setState.bind(this), 1550, { opponentDmg: "" })
+    setTimeout(this.setState.bind(this), 1250, { opponentTakeDmg: true })
+    setTimeout(this.setState.bind(this), 1550, { opponentTakeDmg: false })
     setTimeout(this.setState.bind(this), 2550, { turn: "opponent" })
-    setTimeout(this.setState.bind(this), 2700, { msg: opponentMsg });
+    setTimeout(this.setState.bind(this), 2700, { actionMessage: opponentMsg });
     setTimeout(this.setState.bind(this), 4650, {
       player: {
         name: player.name,
@@ -131,9 +133,11 @@ class App extends Component {
         moves: player.moves
       }
     })
-    setTimeout(this.setState.bind(this), 3800, { playerDmg: "dmg" })
-    setTimeout(this.setState.bind(this), 4100, { playerDmg: "" })
-    setTimeout(this.setState.bind(this), 5100, { turn: "player", isAttacking: false })
+    setTimeout(this.setState.bind(this), 3800, { playerTakeDmg: true })
+    setTimeout(this.setState.bind(this), 4100, { playerTakeDmg: false })
+    setTimeout(this.setState.bind(this), 5100, {  turn: "player", 
+                                                  isAttackPhase: false,
+                                                  actionMessage: ""})
 
     // setTimeout(() => {if (player.currentHP < 30) {
     //   this.setState({ msg: `${player.name} used DETERMINATION!!!` })
@@ -154,17 +158,40 @@ class App extends Component {
     //   , 2000)
 
     // } else {
-    //   this.setState({ turn: "player", isAttacking: false })
+    //   this.setState({ turn: "player", isAttackPhase: false })
     // }}, 5100)
 
   }
 
 
+
+
   render() {
     let opponent = this.state.opponent
     let player = this.state.player
-    let opponentDmgClass = this.state.opponentDmg
-    let playerDmgClass = this.state.playerDmg
+    let playerDmgFx;
+    let opponentDmgFx;
+
+    // This ternary does the EXACT same actions at the if-else_if-else function below it, BUT...
+    // this ternary kicks and linter warning from ESLint stating:
+    // "Expected an assignment or function call and instead saw an expression"
+    // "To ignore, add // eslint-disable-next-line to the line before." <-- This solves that issue...
+
+    // eslint-disable-next-line
+    this.state.playerTakeDmg ? playerDmgFx = "dmgFx" : this.state.opponentTakeDmg ? opponentDmgFx = "dmgFx" : () => {playerDmgFx; opponentDmgFx;};
+
+    // // Same as the ternary above this, but this does not kick any linter warnings from ESLint...
+    // if (this.state.playerTakeDmg) {
+    //   playerDmgFx = "dmgFx"
+    // } else if (this.state.opponentTakeDmg) {
+    //   opponentDmgFx = "dmgFx"
+    // } else {
+    //   playerDmgFx = ""; 
+    //   opponentDmgFx = "";
+    // }
+
+
+
     return (
       <div className="main box">
 
@@ -176,7 +203,7 @@ class App extends Component {
 
           {/* Need to change color of health bar to grayscale... */}
           <span className="opponent-health-bar">
-            <progress id="opponent-health" value={opponent.currentHP} max={opponent.baseHP}></progress>
+            {/* <progress id="opponent-health" value={opponent.currentHP} max={opponent.baseHP}></progress> */}
           </span>
 
           <span className="opponent-health">
@@ -185,7 +212,7 @@ class App extends Component {
 
         </div>
 
-        <img className={`opponent-sprite ${opponentDmgClass}`} src={this.state.opponent.sprite} alt="opponent" />
+        <img className={`opponent-sprite ${opponentDmgFx}`} src={this.state.opponent.sprite} alt="opponent" />
 
         <div className="player-box">
 
@@ -195,7 +222,7 @@ class App extends Component {
 
           {/* Need to change color of health bar to grayscale... */}
           <span className="player-health-bar">
-            <progress id="player-health" value={player.currentHP} max={player.baseHP}></progress>
+            {/* <progress id="player-health" value={player.currentHP} max={player.baseHP}></progress> */}
           </span>
 
           <span className="player-health">
@@ -204,13 +231,13 @@ class App extends Component {
 
         </div>
 
-        <img className={`player-sprite ${playerDmgClass}`} src={`${this.state.player.sprite}`} alt="player" />
+        <img className={`player-sprite ${playerDmgFx}`} src={`${this.state.player.sprite}`} alt="player" />
 
         <div className="selections-box">
         </div>
 
-        <Menus handleAttack={this.handleAttack.bind(this)} store={this.state} />
-        {this.state.isAttacking && <AttackMsg msg={this.state.msg} />}
+        <Menus handleAttack={this.handleAttack.bind(this)} attack={this.state} />
+        {this.state.isAttackPhase && <ActionMessage msg={this.state.actionMessage} />}
         {this.state.turn === "opponent" && <div id="disable" />}
 
       </div>
