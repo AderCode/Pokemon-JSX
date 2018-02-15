@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class AttackMsg extends Component {
+export default class ActionMessage extends Component {
     render() {
         return (
             <div className="atk-msg-box">

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import AttackStats from './AttackStats';
-import RightArrow from '../../RightArrow'
+import RightArrow from '../../Utilities/Arrows/RightArrow'
 import './CSS/Fight.css'
 
 export default class Fight extends Component {
@@ -34,7 +34,7 @@ export default class Fight extends Component {
 
 
     render() {
-        let attack = this.props.store.player.moves;
+        let attack = this.props.attack.player.moves;
         let selected = this.state.class;
         return (
             <Fragment>

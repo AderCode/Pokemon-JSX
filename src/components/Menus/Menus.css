@@ -22,22 +22,22 @@
     
     .fight {
         top: 3rem;
-        left: 5rem
+        left: 4.5rem
     }
     
     .PkMn {
         top: 3rem;
-        left: 25rem
+        left: 24rem
     }
     
     .items {
         top: 10rem;
-        left: 5rem;
+        left: 4.5rem;
     }
     
     .run {
         top: 10rem;
-        left: 25rem;
+        left: 24rem;
     }
 
     .fight-arrow {
@@ -45,7 +45,7 @@
         width: 0; 
         height: 0;
         top: 2.5rem;
-        left: 2rem; 
+        left: 1.5rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
         border-left: 1.5rem solid black;
@@ -56,7 +56,7 @@
         width: 0; 
         height: 0;
         top: 2.5rem;
-        left: 22rem; 
+        left: 21rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
         border-left: 1.5rem solid black;
@@ -67,7 +67,7 @@
         width: 0; 
         height: 0;
         top: 9.5rem;
-        left: 2rem; 
+        left: 1.5rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
         border-left: 1.5rem solid black;
@@ -78,7 +78,7 @@
         width: 0; 
         height: 0;
         top: 9.5rem;
-        left: 22rem; 
+        left: 21rem; 
         border-top: 1.5rem solid transparent;
         border-bottom: 1.5rem solid transparent;
         border-left: 1.5rem solid black;

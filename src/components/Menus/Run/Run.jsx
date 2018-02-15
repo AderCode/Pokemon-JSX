@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Menus from './Menus';
+import Menus from '../Menus';
 import './Run.css'
-import RightArrow from '../RightArrow'
+import RightArrow from '../../Utilities/Arrows/RightArrow'
 
 export default class Run extends Component {
     constructor(props) {

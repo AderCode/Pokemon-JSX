@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './CSS/Arrow.css'
+import './Arrows.css'
 
 export default class RightArrow extends Component {
     render() {
