@@ -3,6 +3,6 @@ import './Arrows.css'
 
 export default class RightArrow extends Component {
     render() {
-    return <div className={this.props.class}></div>
+    return <div className={`${this.props.class} arrow-right`}></div>
     }
 }

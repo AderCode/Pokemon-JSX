@@ -1,0 +1,209 @@
+.stats {
+    position: absolute;
+    height: 55rem;
+      width: 71rem;
+      top: -0.3rem;
+     right: -0.31rem;
+     padding: 0;
+     z-index: 1
+}
+
+.tag {
+    font-size: 1.5rem;
+}
+
+.header {
+    position: absolute;
+  height: 7rem;
+  width: 71rem;
+  top: -0.26rem;
+  left: -0.25rem;
+}
+.title {
+    font-size: 3rem;
+    top: 2.5rem;
+    left: 18rem;
+}
+
+.name-box {
+    position: absolute;
+  height: 3.5rem;
+  width: 30rem;
+  top: 10rem;
+  left: 4rem;
+}
+
+.name{
+    top: 1.3rem;
+    left: 0.5rem;
+}
+
+.age-box {
+    position: absolute;
+  height: 3.5rem;
+  width: 10rem;
+  top: 10rem;
+  left: 35.5rem;
+
+}
+
+.age {
+    top: 1.3rem;
+    left: 0.5rem;
+}
+
+.hometown-box {
+    position: absolute;
+  height: 3.5rem;
+  width: 41.5rem;
+  top: 15rem;
+  left: 4rem;
+
+}
+
+.hometown {
+    top: 1.3rem;
+    left: 0.5rem;
+}
+
+.essentials-box {
+    position: absolute;
+  height: 18.5rem;
+  width: 41.5rem;
+  top: 20rem;
+  left: 4rem;
+
+}
+
+.essentials {
+    top: 1.3rem;
+    left: 0.5rem;
+}
+
+.frame {
+    position: absolute;
+  height: 20rem;
+  width: 20rem;
+  top: 10rem;
+  left: 48rem;
+}
+
+.headshot {
+    width: 100%;
+}
+
+.tool {
+    position: absolute;
+  height: 8rem;
+  width: 8rem;
+  top: 43rem;
+}
+
+.one {
+    left: 4rem;
+}
+
+.two {
+    left: 15rem
+}
+
+.three {
+    left: 26.5rem
+}
+
+.four {
+    left: 38rem
+}
+
+.five {
+    left: 49rem
+}
+
+.six {
+    left: 60rem
+}
+
+.tool-ico {
+    position: absolute;
+    left: 0.43rem;
+    top: 0.43rem;
+    width: 90%
+}
+
+.stats-back {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 35rem;
+    left: 58.5rem;
+}
+
+.stats-back-arrow {
+    position: absolute;
+    top: 34.3rem;
+    left: 56rem;
+    z-index: 67;
+}
+
+.e1 {
+    top: 4rem;
+    left: 2rem;
+}
+
+.e2 {
+    top: 4rem;
+    left: 21rem;
+}
+
+.e3 {
+    top: 8rem;
+    left: 2rem;
+}
+
+.e4 {
+    top: 4rem;
+    left: 33rem;
+}
+
+.e5 {
+    top: 8rem;
+    left: 21rem;
+}
+
+.e6 {
+    top: 16rem;
+    left: 2rem;
+}
+
+.e7 {
+    top: 12rem;
+    left: 2rem;
+}
+
+.e8 {
+    top: 12rem;
+    left: 33rem;
+}
+
+.e9 {
+    top: 8rem;
+    left: 33rem;
+}
+
+.e10 {
+    top: 12rem;
+    left: 21rem;
+}
+
+.e11 {
+    top: 16rem;
+    left: 21rem;
+}
+
+.JSX {
+    animation: App-logo-spin infinite 20s linear;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

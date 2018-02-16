@@ -6,80 +6,61 @@
     margin-top: 39.54rem;
     margin-left: 31.55rem;
     border-radius: 0.25rem;
-      background: white;
-      border-left: 0.25rem solid white;
-      border-top: 0.25rem solid white;
-      box-shadow: 0.15rem 0.15rem 0 0 black,
-                  inset 0.15rem 0.15rem 0 0.15rem black,
-                  0 0 0 0.15rem black
-    }
+        background: white;
+        border-left: 0.25rem solid white;
+        border-top: 0.25rem solid white;
+        box-shadow: 0.15rem 0.15rem 0 0 black,
+                    inset 0.15rem 0.15rem 0 0.15rem black,
+                    0 0 0 0.15rem black
+}
     
     
-   span {
+span {
     position: absolute;
     font-size: 3rem;
-   }
-    
-    .fight {
-        top: 3rem;
-        left: 4.5rem
-    }
-    
-    .PkMn {
-        top: 3rem;
-        left: 24rem
-    }
-    
-    .items {
-        top: 10rem;
-        left: 4.5rem;
-    }
-    
-    .run {
-        top: 10rem;
-        left: 24rem;
-    }
+}
 
-    .fight-arrow {
-        position: absolute;
-        width: 0; 
-        height: 0;
-        top: 2.5rem;
-        left: 1.5rem; 
-        border-top: 1.5rem solid transparent;
-        border-bottom: 1.5rem solid transparent;
-        border-left: 1.5rem solid black;
-      }
-      
-      .PkMn-arrow {
-        position: absolute;
-        width: 0; 
-        height: 0;
-        top: 2.5rem;
-        left: 21rem; 
-        border-top: 1.5rem solid transparent;
-        border-bottom: 1.5rem solid transparent;
-        border-left: 1.5rem solid black;
-      }
-      
-      .items-arrow {
-        position: absolute;
-        width: 0; 
-        height: 0;
-        top: 9.5rem;
-        left: 1.5rem; 
-        border-top: 1.5rem solid transparent;
-        border-bottom: 1.5rem solid transparent;
-        border-left: 1.5rem solid black;
-      }
-      
-      .run-arrow {
-        position: absolute;
-        width: 0; 
-        height: 0;
-        top: 9.5rem;
-        left: 21rem; 
-        border-top: 1.5rem solid transparent;
-        border-bottom: 1.5rem solid transparent;
-        border-left: 1.5rem solid black;
-      }
+.fight {
+    top: 3rem;
+    left: 4.5rem
+}
+
+.PkMn {
+    top: 3rem;
+    left: 24rem
+}
+
+.items {
+    top: 10rem;
+    left: 4.5rem;
+}
+
+.run {
+    top: 10rem;
+    left: 24rem;
+}
+
+.fight-arrow {
+    position: absolute;
+    top: 2.5rem;
+    left: 1.5rem; 
+}
+
+.PkMn-arrow {
+    position: absolute;
+    top: 2.5rem;
+    left: 21rem; 
+}
+
+.items-arrow {
+    position: absolute;
+    top: 9.5rem;
+    left: 1.5rem; 
+}
+
+.run-arrow {
+    position: absolute;
+    top: 9.5rem;
+    left: 21rem; 
+
+}

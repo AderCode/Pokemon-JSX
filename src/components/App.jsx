@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CSS/App.css'
 import Menus from './Menus/Menus'
 import ActionMessage from './Utilities/ActionMessage'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class App extends Component {
       opponentTakeDmg: false,
       playerTakeDmg: false,
       player: {
-        name: "Matthew Aderhold",
+        name: "Aderhold",
         baseHP: 100,
         currentHP: 100,
         sprite: require('../srcImages/player.png'),
@@ -194,11 +195,10 @@ class App extends Component {
 
     return (
       <div className="main box">
-
         <div className="opponent-box">
 
           <span className="opponent-name">
-            {opponent.name}
+          {opponent.name}
           </span>
 
           {/* Need to change color of health bar to grayscale... */}
@@ -239,6 +239,8 @@ class App extends Component {
         <Menus handleAttack={this.handleAttack.bind(this)} attack={this.state} />
         {this.state.isAttackPhase && <ActionMessage msg={this.state.actionMessage} />}
         {this.state.turn === "opponent" && <div id="disable" />}
+
+        
 
       </div>
     );
