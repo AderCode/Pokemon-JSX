@@ -29,7 +29,7 @@ export default class Battle extends Component {
       player: {
         name: "Aderhold",
         baseHP: 100,
-        currentHP: 10,
+        currentHP: 100,
         healthBar: 33.5,
         lowHealth: false,
         moves: {
@@ -71,7 +71,7 @@ export default class Battle extends Component {
         name: "Covalence",
         type: "bootcamp",
         baseHP: 1000,
-        currentHP: 80,
+        currentHP: 1000,
         healthBar: 33.5,
         isDefeated: false,
         moves: {
