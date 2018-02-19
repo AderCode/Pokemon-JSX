@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Menus from '../Menus';
 import './Run.css'
 import RightArrow from '../../Utilities/Arrows/RightArrow'
+import Audio from '../../Music/Audio'
 
 export default class Run extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ export default class Run extends Component {
                     <span className="run-text">
                         You can not escape...
                     </span>
-                    {this.state.isSelected && <RightArrow class={"run-back-arrow"} />}
+                    {this.state.isSelected && <Fragment><RightArrow class={"run-back-arrow"} /><Audio type = {"menuSelect"} /></Fragment>}
                     <span className="run-back"
                         onClick={() => this.props.handleClick("main")}
                         onMouseEnter={() => this.handleMouseEnter()}

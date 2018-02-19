@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Tools from './Tools';
 import RightArrow from '../../Utilities/Arrows/RightArrow'
+import Audio from '../../Music/Audio'
 import './Stats.css';
 
 
@@ -58,8 +59,7 @@ export default class Stats extends Component {
                 <span className="e10 tag">Stripe</span>
                 <span className="e11 tag">Mailgun</span>
                 </div>
-
-                {this.state.isSelected && <RightArrow class={"stats-back-arrow"} />}
+                {this.state.isSelected && <Fragment><RightArrow class={"stats-back-arrow"} /><Audio type = {"menuSelect"} /></Fragment>}
                 <span className="stats-back" onMouseEnter={() => {this.handleMouseEnter()}} onMouseLeave={() => {this.handleMouseLeave()}} onClick={() => this.props.handleClick("main")} >Back</span>
             
                 <Tools class = {"one"} src = {require('../../../srcImages/react.png')} alt = {"JSX"} />

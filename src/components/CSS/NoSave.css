@@ -1,0 +1,21 @@
+.no-save-div {
+    height: 15rem;
+    width: 39rem;
+    position: absolute;
+    margin-top: 21.34rem;
+    margin-left: 33.2rem;
+    border-radius: 0.25rem;
+      background: white;
+      border: 0.25rem solid white;
+      box-shadow: 0.15rem 0.15rem 0 0.15rem black,
+      inset 0.15rem 0.15rem 0 0.15rem black,
+      0 0 0 0.15rem black,
+      inset 0 0 0 0.15rem black;
+}
+
+.no-save-text {
+    font-size: 3rem;
+    top: 4.5rem;
+    left: 2rem;
+}
+

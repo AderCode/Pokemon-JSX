@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Fight from './Fight/Fight'
 import Stats from './Stats/Stats'
 import Run from './Run/Run'
 import RightArrow from '../Utilities/Arrows/RightArrow'
+import Audio from '../Music/Audio'
 import './Menus.css'
 
 export default class Menus extends Component {
@@ -46,7 +47,7 @@ export default class Menus extends Component {
             return (
                 <div className="menus-box">
 
-                {!this.state.isHidden && <RightArrow class = {selected} />}
+                {!this.state.isHidden && <Fragment><RightArrow class = {selected} /><Audio type = {"menuSelect"} /></Fragment>}
                 <span className="fight" onClick={() => this.handleClick("fight")} onMouseEnter={() => this.handleMouseEnter("fight-arrow")} onMouseLeave={()=>this.handleMouseLeave()}>Fight</span>    
                 
                 <span className="PkMn" onClick={() => this.handleClick("stats")} onMouseEnter={() => this.handleMouseEnter("PkMn-arrow")} onMouseLeave={()=>this.handleMouseLeave()}>Stats</span>

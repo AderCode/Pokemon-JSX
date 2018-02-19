@@ -147,7 +147,7 @@ div {
 .selections-box {
   position: absolute;
   height: 15rem;
-  width: 40rem;
+  width: 70.5rem;
   top: 39.54rem;
   left: 0.15rem;
   border-radius: 0.25rem;
@@ -209,15 +209,119 @@ div {
   height: 100%;
 }
 
+.opponentSlide {
+  position: absolute;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 4s;
+  animation: slide 0.5s forwards;
+  left: -42rem;
+  animation-delay: 3.5s;
+}
 
-/* .box > i {
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-top-color: black;
-  margin-top: 23px;
-  animation: bounce 0.5s ease-in-out 0 infinite alternate;
-  float: right;
-} */
+@-webkit-keyframes slide {
+  100% {   left: 42rem; }
+}
 
+@keyframes slide {
+  100% {   left: 42rem;  }
+}
+
+.fade-out {
+  color: #FFFFFF;
+  text-align: center;
+
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 3s ease-in-out;
+  -ms-transition: opacity 3s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+   opacity: 0;
+}
+
+.playerSlide {
+  position: absolute;
+  -webkit-animation: slide-left 0.5s backwards;
+  -webkit-animation-delay: 2s;
+  left: 105rem;
+  animation: slide-left 0.5s forwards;
+  animation-delay: 2s;
+}
+
+@-webkit-keyframes slide-left {
+  100% {   left: 5rem; }
+}
+
+@keyframes slide-left {
+  100% {   left: 5rem;  }
+}
+
+.intro {
+  position: absolute;
+  background-color: rgba(225,225,225,0);
+  height: 100%;
+  width: 100%;
+  /* z-ind; */
+  transition:all 0.5s ease-in-out;
+  -webkit-animation:blink normal 0.4s 5 ease-in-out;
+}
+
+.none {
+  display: none;
+}
+
+@keyframes blink {
+  0% {
+         background-color: rgba(225,225,225,1)
+  }
+  50% {
+         background-color: rgba(225,225,225,0.5)
+  }
+  100% {
+         background-color: rgba(225,225,225,1)
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+         background-color: rgba(225,225,225,1)
+  }
+  50% {
+         background-color: rgba(225,225,225,0.5)
+  }
+  100% {
+         background-color: rgba(225,225,225,1)
+  }
+}
+
+.save_files {
+  position: absolute;
+  height: 20rem;
+  width: 35rem;
+  top: 2rem;
+  left: 2rem;
+}
+
+.new_game {
+  position: absolute;
+  font-size: 3rem;
+  top: 4rem;
+  left: 2rem;
+}
+
+.continue {
+  position: absolute;
+  font-size: 3rem;
+  top: 12rem;
+  left: 2rem;
+}
+
+.newGame{
+  position: absolute;
+  top: 3.65rem;
+  left: 30rem
+}
+
+._continue {
+  position: absolute;
+  top: 11.65rem;
+  left: 30rem
+}
 

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import AttackStats from './AttackStats';
 import RightArrow from '../../Utilities/Arrows/RightArrow'
+import Audio from '../../Music/Audio'
 import './CSS/Fight.css'
 
 export default class Fight extends Component {
@@ -39,7 +40,7 @@ export default class Fight extends Component {
         return (
             <Fragment>
                 <div className="attacks-box">
-                    {!this.state.isHidden && <RightArrow class={selected} />}
+                    {!this.state.isHidden && <Fragment><RightArrow class={selected} /><Audio type = {"menuSelect"} /></Fragment>}
                     <span
                         id="attacks"
                         className="attack_slot_1"

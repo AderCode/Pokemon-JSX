@@ -1,0 +1,15 @@
+.back_bar {
+    position: absolute;
+    top: 3rem;
+    left: 0.5rem;
+    width: 33rem;
+}
+
+.front_bar {
+    position: absolute;
+    top: -0.2rem;
+    left: -0.25rem;
+    height: 0.45rem;
+    background-color: gray;
+    border-radius: 0.25rem;
+}
