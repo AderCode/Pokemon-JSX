@@ -4,7 +4,7 @@ export default class ActionMessage extends Component {
     render() {
         return (
             <div className="atk-msg-box">
-            <p className="atk-msg">{this.props.msg}</p>
+            <span className="atk-msg">{this.props.msg}</span>
             </div>
         )
     }

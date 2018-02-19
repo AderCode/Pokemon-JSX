@@ -4,18 +4,26 @@ import BattleAudioMP3 from './audio_dependancies/128-battle (vs gym leader).mp3'
 import MenuSelectOGG from './audio_dependancies/300-Menu_Select.ogg'
 import MenuSelectMP3 from './audio_dependancies/300-Menu_Select.mp3'
 import DamageOGG from './audio_dependancies/301-damage-sfx.ogg'
+//import DamageMP3 HERE
+import VictoryOGG from './audio_dependancies/129-victory_vs_gym_leader_.ogg'
+//import VictoryMP3 HERE
+import EndingOGG from './audio_dependancies/145-ending.ogg'
+
+
+
 export default class Audio extends Component {
     render() {
         let OGG;
         let MP3;
         let battle = () => { OGG = BattleAudioOGG; MP3 = BattleAudioMP3 }
         let menuSelect = () => { OGG = MenuSelectOGG; MP3 = MenuSelectMP3 }
-        let damage = () => OGG = DamageOGG;
-        // let credits = CreditAudioOGG
+        let damage = () => OGG = DamageOGG; // MP3 = DamageMP3
+        let victory = () => OGG = VictoryOGG; // MP3 = VictoryMP3
+        let ending = () => OGG = EndingOGG; // MP3 = EndingMP3
         let audio = this.props.type
 
         //eslint-disable-next-line
-        audio === "battle" ? battle() : audio === "menuSelect" ? menuSelect() : audio === "damage" ? damage() : false
+        audio === "battle" ? battle() : audio === "menuSelect" ? menuSelect() : audio === "damage" ? damage() : audio === "victory" ? victory(): audio === "ending" ? ending() : false
         if (this.props.loop) {
             return (
 

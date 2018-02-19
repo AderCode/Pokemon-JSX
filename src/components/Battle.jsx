@@ -5,6 +5,7 @@ import ActionMessage from './Utilities/ActionMessage'
 import HealthBar from './Utilities/HealthBar'
 import playerImg from '../srcImages/player.png'
 import opponentImg from '../srcImages/covalence.png'
+import ProfessorImg from '../srcImages/professor_sprite.png'
 import Audio from './Music/Audio'
 
 export default class Battle extends Component {
@@ -24,10 +25,11 @@ export default class Battle extends Component {
       actionMessage: "",
       opponentTakeDmg: false,
       playerTakeDmg: false,
+      credits: false,
       player: {
         name: "Aderhold",
         baseHP: 100,
-        currentHP: 100,
+        currentHP: 10,
         healthBar: 33.5,
         lowHealth: false,
         moves: {
@@ -69,10 +71,9 @@ export default class Battle extends Component {
         name: "Covalence",
         type: "bootcamp",
         baseHP: 1000,
-        currentHP: 1,
+        currentHP: 80,
         healthBar: 33.5,
         isDefeated: false,
-        sprite: require('../srcImages/covalence.png'),
         moves: {
           1: {
             name: "[object Object]",
@@ -122,8 +123,8 @@ export default class Battle extends Component {
   handleAttack(move) {
     let player = this.state.player
     let opponent = this.state.opponent
-    let playerMsg = `${player.name} used ${player.moves[move].name}!`
-    let outOfPP = `You do not have enough PP for that move.`
+    let playerMsg = `${player.name} USED ${player.moves[move].name}!`
+    let outOfPP = `YOU DO NOT HAVE ENOUGH PP FOR THAT MOVE.`
     let playerAttack = player.moves[move]
     let newAttackPP = this.state.player.moves[move].currentPP - 1
     let newOpponentHP;
@@ -176,7 +177,7 @@ export default class Battle extends Component {
     let opponent = this.state.opponent;
     let player = this.state.player;
     let opponentMove = Math.floor(Math.random() * 4) + 1
-    let opponentMsg = `${opponent.name} used ${opponent.moves[opponentMove].name}!`
+    let opponentMsg = `${opponent.name} USED ${opponent.moves[opponentMove].name}!`
     let newPlayerHP;
 
     player.currentHP > opponent.moves[opponentMove].str ? newPlayerHP = player.currentHP - opponent.moves[opponentMove].str : newPlayerHP = player.currentHP - player.currentHP + 1
@@ -193,10 +194,22 @@ export default class Battle extends Component {
   handleVictory() {
 
     setTimeout(() => {
-      this.setState({ actionMessage: "You win." });
-      this.setNestedState(this.state.opponent, "isDefeated", true)
+      this.setState({ actionMessage: `${this.state.opponent.name} FAINTED.` });
+      this.setNestedState(this.state, "music", "victory");
     }, 1000);
-    setTimeout(() => this.forceUpdate(), 2000)
+    setTimeout(() => {
+      this.setNestedState(this.state.opponent, "isDefeated", true);
+      this.forceUpdate();
+    }, 3000)
+    setTimeout(() => this.setState({ actionMessage: `${this.state.player.name} DEFEATED ${this.state.opponent.name}.` }), 8000);
+    setTimeout(() => this.setState({ actionMessage: `${this.state.player.name} LOSES $1,225,463.` }), 12000);
+    setTimeout(() => this.setState({ actionMessage: "Professor Stapleton: HI!" }), 17000);
+    setTimeout(() => this.setState({ actionMessage: `Professor Stapleton: CONGRATULATIONS ${this.state.player.name} ON DEFEATING ${this.state.opponent.name}!` }), 22000);
+    setTimeout(() => this.setState({ actionMessage: "Professor Stapleton: YOU ARE WELL ON YOUR WAY TO YOUR NEW FULL-STACK CAREER." }), 27000);
+    setTimeout(() => this.setState({ actionMessage: "Professor Stapleton: SEE YOU SOON!" }), 32000);
+    setTimeout(() => this.setState({ actionMessage: `${this.state.player.name} RECEIVED Covalence Full-Stack Certificate of Completion.` }), 37000);
+    setTimeout(() => this.setState({ credits: true }), 42000);
+    setTimeout(() => this.props.handleCredits(), 47000)
   }
 
   herosNeverDie() {
@@ -219,15 +232,16 @@ export default class Battle extends Component {
   }
 
   render() {
-    let track = this.state.music
     let opponent = this.state.opponent
     let player = this.state.player
     let playerDmgFx;
     let opponentDmgFx;
     let none;
     let defeatAnimation;
+    let creditsRoll;
     this.state.opponentIntro === "opponentSprite" ? none = "none" : none = "null";
     opponent.isDefeated ? defeatAnimation = "fade-out" : defeatAnimation = "null";
+    this.state.credits ? creditsRoll = "fade-out-slow" : creditsRoll = "null";
 
     // This ternary does the EXACT same actions at the if-else_if-else function below it, BUT...
     // this ternary kicks and linter warning from ESLint stating:
@@ -251,47 +265,53 @@ export default class Battle extends Component {
 
     return (
       <div className="main box">
-        {this.state.opponentIntro === "opponentSprite" && <div className="opponent-box">
-          {playerDmgFx === "dmgFx" && <Audio type={"damage"} />}
-          {opponentDmgFx === "dmgFx" && <Audio type={"damage"} />}
-          <span className="opponent-name">
-            {opponent.name}
-          </span>
+        <div className={`${creditsRoll}`}>
+          {this.state.opponentIntro === "opponentSprite" && <div className="opponent-box">
+            {playerDmgFx === "dmgFx" && <Audio type={"damage"} />}
+            {opponentDmgFx === "dmgFx" && <Audio type={"damage"} />}
+            <span className="opponent-name">
+              {opponent.name}
+            </span>
 
-          <HealthBar width={opponent.healthBar} />
+            <HealthBar width={opponent.healthBar} />
 
-          <span className="opponent-health">
-            HP:{opponent.currentHP}/{opponent.baseHP}
-          </span>
+            <span className="opponent-health">
+              HP:{opponent.currentHP}/{opponent.baseHP}
+            </span>
 
-        </div>}
+          </div>}
 
-        <img className={`opponent-sprite ${this.state.opponentIntro} ${opponentDmgFx} ${defeatAnimation}`} src={opponentImg} alt="opponent" />
-        <Audio type={track} loop={true} />
-        {this.state.playerIntro === "playerSprite" && <div className="player-box">
+          <img className={`opponent-sprite ${this.state.opponentIntro} ${opponentDmgFx} ${defeatAnimation}`} src={opponentImg} alt="opponent" />
+          {opponent.isDefeated && <img className={`professor-sprite professor-intro`} src={ProfessorImg} alt="professor" />}
+          {this.state.music === "battle" && <Audio type={"battle"} loop={true} />}
+          {this.state.music === "victory" && <Audio type={"victory"} loop={true} />}
+          {this.state.playerIntro === "playerSprite" && <div className="player-box">
 
-          <span className="player-name">
-            {player.name}
-          </span>
+            <span className="player-name">
+              {player.name}
+            </span>
 
-          <HealthBar width={player.healthBar} />
+            <HealthBar width={player.healthBar} />
 
-          <span className="player-health">
-            HP:{player.currentHP}/{player.baseHP}
-          </span>
+            <span className="player-health">
+              HP:{player.currentHP}/{player.baseHP}
+            </span>
 
-        </div>}
+          </div>}
 
-        <img className={`player-sprite ${this.state.playerIntro} ${playerDmgFx}`} src={playerImg} alt="player" />
-        <div className="selections-box" />
+          <img className={`player-sprite ${this.state.playerIntro} ${playerDmgFx}`} src={playerImg} alt="player" />
+          <div className="selections-box" />
 
-        {this.state.opponentIntro === "opponentSprite" && <Menus handleAttack={this.handleAttack.bind(this)} attack={this.state} />}
+          {this.state.opponentIntro === "opponentSprite" && <Menus handleAttack={this.handleAttack.bind(this)} attack={this.state} />}
 
-        {this.state.isAttackPhase && <ActionMessage msg={this.state.actionMessage} />}
-        {this.state.turn === "opponent" && <div id="disable" />}
+          {this.state.isAttackPhase && <ActionMessage msg={this.state.actionMessage} />}
+          {this.state.turn === "opponent" && <div id="disable" />}
 
 
-        <div className={`intro ${none}`}></div>
+          <div className={`intro ${none}`}></div>
+
+        </div>
+
       </div>
     );
   }

@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import Battle from './Battle';
 import GameStart from './GameStart';
-import NoSave from './NoSave'
+import Credits from './Credits'
 
 export default class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            newGame: false,
+            newGame: "start", //Change back to "start",
             continue: false
         }
 
@@ -16,7 +16,7 @@ export default class App extends Component {
     }
 
     handleNewGame() {
-        this.setState({newGame: true})
+        this.setState({newGame: "inProgress"})
     }
 
     handleContinue() {
@@ -24,12 +24,16 @@ export default class App extends Component {
         setTimeout(this.setState.bind(this), 2500, {continue: false})
     }
 
+    handleCredits() {
+        this.setState({newGame: "credits"})
+    }
+
     render() {
         return(
             <Fragment>
-            {!this.state.newGame && <GameStart handleNewGame = {() => this.handleNewGame()} handleContinue = {() => this.handleContinue()} />}
-            {this.state.newGame && <Battle />}
-            {this.state.continue && <NoSave />}
+            {this.state.newGame === "start" && <GameStart handleNewGame = {() => this.handleNewGame()} handleContinue = {() => this.handleContinue()} continue={this.state.continue} />}
+            {this.state.newGame === "inProgress" && <Battle handleCredits = {() => this.handleCredits()} />}
+            {this.state.newGame === "credits" && <Credits />}
             </Fragment>
         )
     }
