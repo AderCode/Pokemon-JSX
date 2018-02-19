@@ -10,6 +10,9 @@ import Audio from './Music/Audio'
 export default class Battle extends Component {
   constructor(props) {
     super(props);
+    this.handleOpponentTurn.bind(this)
+    this.handleVictory.bind(this)
+    this.checkPlayerHealth.bind(this)
 
 
     this.state = {
@@ -24,7 +27,7 @@ export default class Battle extends Component {
       player: {
         name: "Aderhold",
         baseHP: 100,
-        currentHP: 1,
+        currentHP: 100,
         healthBar: 33.5,
         lowHealth: false,
         moves: {
@@ -66,7 +69,7 @@ export default class Battle extends Component {
         name: "Covalence",
         type: "bootcamp",
         baseHP: 1000,
-        currentHP: 1000,
+        currentHP: 1,
         healthBar: 33.5,
         isDefeated: false,
         sprite: require('../srcImages/covalence.png'),
@@ -117,18 +120,14 @@ export default class Battle extends Component {
 
 
   handleAttack(move) {
-    let opponentMove = Math.floor(Math.random() * 4) + 1
     let player = this.state.player
     let opponent = this.state.opponent
     let playerMsg = `${player.name} used ${player.moves[move].name}!`
-    let opponentMsg = `${opponent.name} used ${opponent.moves[opponentMove].name}!`
     let outOfPP = `You do not have enough PP for that move.`
     let playerAttack = player.moves[move]
     let newAttackPP = this.state.player.moves[move].currentPP - 1
     let newOpponentHP;
-    let newPlayerHP;
     opponent.currentHP > player.moves[move].str ? newOpponentHP = opponent.currentHP - player.moves[move].str : newOpponentHP = opponent.currentHP - opponent.currentHP
-    player.currentHP > opponent.moves[move].str ? newPlayerHP = player.currentHP - opponent.moves[move].str : newPlayerHP = player.currentHP - player.currentHP + 1
     if (player.moves[move].currentPP === 0) {
       this.setState({ isAttackPhase: true, actionMessage: outOfPP });
       setTimeout(this.setState.bind(this), 3250, {
@@ -143,13 +142,7 @@ export default class Battle extends Component {
       setTimeout(this.setState.bind(this), 1550, { opponentTakeDmg: false })
       setTimeout(this.setNestedState.bind(this), 2100, opponent, "currentHP", newOpponentHP)
       setTimeout(this.setNestedState.bind(this), 2100, opponent, "healthBar", this.handleHealthDecrease(newOpponentHP, opponent.baseHP))
-      setTimeout(this.setState.bind(this), 2550, { turn: "opponent" })
-      setTimeout(this.setState.bind(this), 2700, { actionMessage: opponentMsg });
-      setTimeout(this.setState.bind(this), 3850, { playerTakeDmg: true })
-      setTimeout(this.setState.bind(this), 4150, { playerTakeDmg: false })
-      setTimeout(this.setNestedState.bind(this), 4700, player, "currentHP", newPlayerHP)
-      setTimeout(this.setNestedState.bind(this), 4700, player, "healthBar", this.handleHealthDecrease(newPlayerHP, player.baseHP))
-      setTimeout(() => this.checkPlayerHealth(), 5150)
+      setTimeout(this.checkOpponentHealth.bind(this), 2550)
     }
   }
 
@@ -170,9 +163,40 @@ export default class Battle extends Component {
       this.setState({ turn: "player", isAttackPhase: false, actionMessage: "" })
   }
 
+  checkOpponentHealth() {
+    console.log('cOH')
+    if (this.state.opponent.currentHP < 1) {
+      this.handleVictory()
+    } else {
+      this.handleOpponentTurn()
+    }
+  }
+
+  handleOpponentTurn() {
+    let opponent = this.state.opponent;
+    let player = this.state.player;
+    let opponentMove = Math.floor(Math.random() * 4) + 1
+    let opponentMsg = `${opponent.name} used ${opponent.moves[opponentMove].name}!`
+    let newPlayerHP;
+
+    player.currentHP > opponent.moves[opponentMove].str ? newPlayerHP = player.currentHP - opponent.moves[opponentMove].str : newPlayerHP = player.currentHP - player.currentHP + 1
+
+    this.setState({ turn: "opponent" })
+    setTimeout(this.setState.bind(this), 1150, { actionMessage: opponentMsg });
+    setTimeout(this.setState.bind(this), 2300, { playerTakeDmg: true })
+    setTimeout(this.setState.bind(this), 2600, { playerTakeDmg: false })
+    setTimeout(this.setNestedState.bind(this), 3150, player, "currentHP", newPlayerHP)
+    setTimeout(this.setNestedState.bind(this), 3150, player, "healthBar", this.handleHealthDecrease(newPlayerHP, player.baseHP))
+    setTimeout(() => this.checkPlayerHealth(), 3600)
+  }
 
   handleVictory() {
-    this.setState({ actionMessage: "You win." })
+
+    setTimeout(() => {
+      this.setState({ actionMessage: "You win." });
+      this.setNestedState(this.state.opponent, "isDefeated", true)
+    }, 1000);
+    setTimeout(() => this.forceUpdate(), 2000)
   }
 
   herosNeverDie() {
@@ -203,7 +227,7 @@ export default class Battle extends Component {
     let none;
     let defeatAnimation;
     this.state.opponentIntro === "opponentSprite" ? none = "none" : none = "null";
-    opponent.defeated ? defeatAnimation = "fade-out" : defeatAnimation = "null";
+    opponent.isDefeated ? defeatAnimation = "fade-out" : defeatAnimation = "null";
 
     // This ternary does the EXACT same actions at the if-else_if-else function below it, BUT...
     // this ternary kicks and linter warning from ESLint stating:

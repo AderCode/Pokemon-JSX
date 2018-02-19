@@ -230,7 +230,7 @@ div {
   color: #FFFFFF;
   text-align: center;
 
-  -webkit-transition: opacity 0.5s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 3s ease-in-out;
   -ms-transition: opacity 3s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
