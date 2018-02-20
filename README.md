@@ -1,4 +1,5 @@
 ##PokémonJSX
+
 ###Resume Edition
 
 This is a personal side project of creating an interactive resume, and tell-tale of my time in the Covalence.io Full-Stack Coding Bootcamp, completely in ReactJS(JSX) told in the style of one of my favorite classic GameBoy games Pokémon. 
@@ -24,10 +25,8 @@ Stay tuned for more to come!
 To-Do (WIPs):
 Items
 Intro animations
-Death handling
 Gameboy outer shell when on mobile devices
 End credits
-Music
 AuthToken game saves
 New Game / Continue
 Player Customization
